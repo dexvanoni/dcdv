@@ -6,6 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+    <!--<link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"/>-->
+
+      <link rel="stylesheet" href="/materialize/css/materialize.min.css" media="screen,projection">
+      <link href="/css/jquery.dataTables.min.css" rel="stylesheet" media="screen,projection">
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -13,7 +19,7 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
+                background-color: #000000;
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
@@ -72,24 +78,87 @@
                         <a href="{{ url('/home') }}">Home</a>
                     @else
                         <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
+                        <a href="{{ url('/register') }}">Registro</a>
                     @endif
                 </div>
             @endif
 
             <div class="content">
+              <div class="center">
+                <img src="/imagens/dacasadavo.jpg" alt="dacasadavo" width="380em" height="380em">
+              </div>
                 <div class="title m-b-md">
-                    Laravel
+                    Sistema de Pedidos
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://laravel.com/docs">Pedido</a>
+                    <a href="https://laracasts.com">Clientes</a>
+                    <a href="https://laravel-news.com">Produtos</a>
+                    <a href="https://forge.laravel.com">Relatórios</a>
                 </div>
             </div>
         </div>
+
+<script type="text/javascript" src="/js/jquery-3.2.0.js"></script>
+<script src="/materialize/js/materialize.js"></script>
+<script src="/materialize/js/materialize.min.js"></script>
+<script src="/js/jquery.dataTables.min.js"></script>
+<script src="/js/dataTables.material.min.js"></script>
+<script type="text/javascript">
+      $(document).ready(function(){
+        $("#envia").hide();
+        $(".dropdown-button").dropdown();
+        $('.tooltipped').tooltip({delay: 50});
+         $(".button-collapse").sideNav();
+         $('.collapsible').collapsible();
+         $('#pesquisa').DataTable();
+          $('select').material_select();
+       $("#atendimentoS").click(function(){
+         if($(this).prop('checked')){
+           $("#envia").show();
+         }});
+         $("#atendimentoN").click(function(){
+           if($(this).prop('checked')){
+             $("#envia").show();
+           }});
+         });
+  </script>
+  <script type="text/javascript">
+  $('.datepicker').pickadate({
+    selectMonths: true,//Creates a dropdown to control month
+    selectYears: 15,//Creates a dropdown of 15 years to control year
+    //The title label to use for the month nav buttons
+    labelMonthNext: 'Proximo Mês',
+    labelMonthPrev: 'Mês Anterior',
+    //The title label to use for the dropdown selectors
+    labelMonthSelect: 'Selecionar Mês',
+    labelYearSelect: 'Selecionar Ano',
+    //Months and weekdays
+    monthsFull: [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro' ],
+    monthsShort: [ 'Jan', 'Fev', 'Mar', 'Abr', 'Maio', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
+    weekdaysFull: [ 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado' ],
+    weekdaysShort: [ 'Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb' ],
+    //Materialize modified
+    weekdaysLetter: [ 'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
+    //Today and clear
+    today: 'Hoje',
+    clear: 'Limpar',
+    close: 'Fechar',
+    //The format to show on the `input` element
+    format: 'dd/mm/yyyy'
+  });
+  $('.timepicker').pickatime({
+    default: 'now', // Set default time: 'now', '1:30AM', '16:30'
+    fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
+    twelvehour: false, // Use AM/PM or 24-hour format
+    donetext: 'OK', // text for done-button
+    cleartext: 'Clear', // text for clear-button
+    canceltext: 'Cancel', // Text for cancel-button
+    autoclose: false, // automatic close timepicker
+    ampmclickable: true, // make AM PM clickable
+    aftershow: function(){} //Function for after opening timepicker
+  });
+  </script>
     </body>
 </html>
