@@ -18,7 +18,7 @@ class CreateClientesTable extends Migration
             $table->text('nome');
             $table->text('rua');
             $table->integer('numero');
-            $table->bairro('bairro');
+            $table->text('bairro');
             $table->integer('tel');
             $table->text('localTrabalho');
             $table->timestamps();

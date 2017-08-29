@@ -18,6 +18,9 @@ class CreatePedidosTable extends Migration
             $table->integer('idCliente');
             $table->text('produto');
             $table->integer('qnt');
+            $table->float('precoUn');
+            $table->float('precoTot');
+            $table->text('pagamento');
             $table->timestamps();
         });
     }

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('titulo')
+  Da Casa da Vó
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">
@@ -8,7 +12,7 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    <a href="/inicio">Ir para o Sistema</a>
                 </div>
             </div>
         </div>
