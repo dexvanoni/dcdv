@@ -91,12 +91,12 @@
                     Sistema de Pedidos
                 </div>
 
-                <div class="links">
+                {{-- <div class="links">
                     <a href="https://laravel.com/docs">Pedido</a>
                     <a href="https://laracasts.com">Clientes</a>
                     <a href="https://laravel-news.com">Produtos</a>
                     <a href="https://forge.laravel.com">Relatórios</a>
-                </div>
+                </div> --}}
             </div>
         </div>
 
