@@ -30,8 +30,16 @@ class ClienteController extends Controller
       return view('clientes.create', compact('cliente'));
     }
 
-    public function show(){
+    public function show($id){
+        $cliente = Cliente::find($id);
 
+        $pedido = Cliente::find($id)->pedidos;
+        //$pedido = Cliente::has('pedido')->get();
+       //$envolvidos = Comissaria::find($id)->militares;
+       //$total = $envolvidos->count();
+       //dd($pedido);
+       //exit;
+       return view('clientes.show', compact('cliente', 'pedido'));
     }
 
     public function edit(){
