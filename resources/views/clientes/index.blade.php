@@ -16,6 +16,9 @@
         <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li> --}}
       </ul>
     </div>
+    @if (Session::has('mensagem_create'))
+        <div class="card-panel teal lighten-4">{{Session::get('mensagem_create')}}</div>
+    @endif
 <h5 class="center">Lista de Clientes</h5><br><br>
     <table id="clientes" class="hover">
        <thead>

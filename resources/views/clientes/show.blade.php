@@ -43,15 +43,17 @@
     <h5 class="center">Pedidos relacionados</h5>
   </div>
 @if ($pedido)
+  <h6>Total em débitos: R$ {{ $total }}</h6>
   <table>
       <thead>
         <tr>
-          <th>N. Pedido</th>
+          <th class="center">N. Pedido</th>
           <th>Produto</th>
-          <th>Qtn</th>
-          <th>UN</th>
-          <th>Total</th>
-          <th>Pagamento</th>
+          <th class="center">Qtn</th>
+          <th class="center">UN</th>
+          <th class="center">Total</th>
+          <th>Dt. Compra</th>
+          <th class="center">Pagamento</th>
         </tr>
       </thead>
 
@@ -59,16 +61,17 @@
 
           @foreach ($pedido as $pedidos)
             <tr>
-              <td>{{$pedidos->id}}</td>
+              <td class="center">{{$pedidos->id}}</td>
               <td>{{$pedidos->produto}}</td>
-              <td>{{$pedidos->qnt}}</td>
-              <td>{{$pedidos->precoUn}}</td>
-              <td>{{$pedidos->precoTot}}</td>
-              <td>
+              <td class="center">{{$pedidos->qnt}}</td>
+              <td class="center">{{$pedidos->precoUn}}</td>
+              <td class="center">{{$pedidos->precoTot}}</td>
+              <td>{{date('d/m/Y H:i', strtotime($pedidos->created_at)) }}</td>
+              <td class="center">
                 @if ($pedidos->pagamento == "s")
-                  PAGO
+                  <i class="small material-icons tooltipped" data-tooltip="Pago">thumb_up</i>
                 @else
-                  Em débito
+                  <i class="small material-icons tooltipped" data-tooltip="Em débito">money_off</i>
                 @endif
               </td>
             </tr>
@@ -76,6 +79,6 @@
       </tbody>
     </table>
   @else
-    Este cliente não pussui pedidos!
+    <h4>Este cliente não pussui pedidos!</h4>
   @endif
 @endsection

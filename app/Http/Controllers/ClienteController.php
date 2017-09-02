@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 use App\Cliente;
 use App\Pedido;
 use App\Produto;
@@ -32,14 +34,24 @@ class ClienteController extends Controller
 
     public function show($id){
         $cliente = Cliente::find($id);
-
         $pedido = Cliente::find($id)->pedidos;
-        //$pedido = Cliente::has('pedido')->get();
-       //$envolvidos = Comissaria::find($id)->militares;
-       //$total = $envolvidos->count();
-       //dd($pedido);
+
+        $debitos = DB::table('pedidos')
+                ->select('precoTot')
+                ->where([
+                  ['cliente_id', '=', $cliente->id],
+                  ['pagamento', '=', 'n'],
+                ])->get();
+        $total = $debitos->sum('precoTot');
+       //echo $pedido->precoTot;
        //exit;
-       return view('clientes.show', compact('cliente', 'pedido'));
+       return view('clientes.show', compact('cliente', 'pedido', 'total'));
+    }
+
+    public function store(Request $request){
+       $cliente = Cliente::create($request->all());
+       Session::flash('mensagem_create', 'Novo cliente adicionado.');
+       return redirect()->action('ClienteController@index');
     }
 
     public function edit(){
