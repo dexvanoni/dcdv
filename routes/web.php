@@ -28,3 +28,5 @@ Route::resource('produtos', 'ProdutoController');
 Route::resource('pedidos', 'PedidoController');
 
 Route::resource('relatorios', 'RelatorioController');
+
+Route::resource('agenda', 'AgendaController');

@@ -18,10 +18,19 @@
     <nav>
       <div class="nav-wrapper">
         <a href="/inicio" class="brand-logo">Da Casa da Vó</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
           <li><a href="{{ route('pedidos.index') }}">Pedidos</a></li>
           <li><a href="{{ route('clientes.index') }}">Clientes</a></li>
           <li><a href="{{ route('produtos.index') }}">Produtos</a></li>
+          <li><a href="{{ route('agenda.index') }}">Agendamentos</a></li>
+          <li><a href="collapsible.html">Relatórios</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li><a href="{{ route('pedidos.index') }}">Pedidos</a></li>
+          <li><a href="{{ route('clientes.index') }}">Clientes</a></li>
+          <li><a href="{{ route('produtos.index') }}">Produtos</a></li>
+          <li><a href="{{ route('agenda.index') }}">Agendamentos</a></li>
           <li><a href="collapsible.html">Relatórios</a></li>
         </ul>
       </div>
@@ -55,12 +64,8 @@
          $(".button-collapse").sideNav();
          $('.collapsible').collapsible();
          $('#clientes').DataTable();
-          $('#pedidos').DataTable({
-            "order": [[ 6, "desc" ]]
-           } );
-           $('#produtos').DataTable({
-             "order": [[ 6, "desc" ]]
-            } );
+          $('#pedidos').DataTable();
+           $('#produtos').DataTable();
           $('select').material_select();
        $("#atendimentoS").click(function(){
          if($(this).prop('checked')){

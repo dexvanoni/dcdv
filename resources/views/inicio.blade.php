@@ -16,7 +16,8 @@
     </div>
 <blockquote>
   Sistema de gerenciamento de pedidos Da Casa da Vó <br>
-  Utilize o menu superior para realizar tarefas do sistema.
+  Utilize o menu superior para realizar tarefas do sistema.<br>
+  Pagamentos agendados Clique aqui!
 </blockquote>
 
 @endsection

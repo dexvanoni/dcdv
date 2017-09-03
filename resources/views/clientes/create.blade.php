@@ -16,34 +16,34 @@
 <div class="row">
   <div class="input-field col s4">
     <i class="material-icons prefix">account_circle</i>
-    <input id="icon_prefix" type="text" class="validate" name="nome">
+    {{ Form::text('nome', null, array('class'=>'validate', 'id'=>'icon_prefix')) }}
     <label for="icon_prefix">Nome</label>
   </div>
   <div class="input-field col s4">
     <i class="material-icons prefix">phone</i>
-    <input id="icon_telephone" type="tel" class="validate" name="tel">
+    {{ Form::tel('tel', null, array('class'=>'validate',  'id'=>'icon_telephone')) }}
     <label for="icon_telephone">Contato</label>
   </div>
   <div class="input-field col s4">
     <i class="material-icons prefix">business_center</i>
-    <input id="icon_prefix" type="text" class="validate" name="localTrabalho">
+    {{ Form::text('localTrabalho', null, array('class'=>'validate',  'id'=>'icon_prefix')) }}
     <label for="icon_prefix">Empresa</label>
   </div>
 </div>
 <div class="row">
   <div class="input-field col s4">
     <i class="material-icons prefix">cloud_circle</i>
-    <input id="icon_prefix" type="text" class="validate" name="rua">
+    {{ Form::text('rua', null, array('class'=>'validate',  'id'=>'icon_prefix')) }}
     <label for="icon_prefix">Rua</label>
   </div>
   <div class="input-field col s4">
     <i class="material-icons prefix">person_pin_circle</i>
-    <input id="icon_prefix" type="text" class="validate" name="numero">
+    {{ Form::text('numero', null, array('class'=>'validate',  'id'=>'icon_prefix')) }}
     <label for="icon_prefix">Numero</label>
   </div>
   <div class="input-field col s4">
     <i class="material-icons prefix">swap_vertical_circle</i>
-    <input id="icon_prefix" type="text" class="validate" name="bairro">
+    {{ Form::text('bairro', null, array('class'=>'validate',  'id'=>'icon_prefix')) }}
     <label for="icon_prefix">Bairro</label>
   </div>
 </div>

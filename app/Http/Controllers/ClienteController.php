@@ -54,15 +54,25 @@ class ClienteController extends Controller
        return redirect()->action('ClienteController@index');
     }
 
-    public function edit(){
-
+    public function edit($id){
+      $cliente = Cliente::find($id);
+      return view('clientes.edit', compact('cliente'));
     }
 
-    public function update(){
+    public function update(Request $request, $id){
+      $cliente = Cliente::find($id);
 
+      $data = $request->all();
+      $cliente->fill($data)->save();
+      Session::flash('mensagem_edit', "Ordem de Serviço editada com Sucesso!");
+      return redirect()->action('ClienteController@index');
     }
 
-    public function destroy(){
+    public function destroy($id){
+      $cliente = Cliente::find($id);
+      $cliente->delete();
+      Session::flash('mensagem_del', "Cliente deletado com Sucesso!");
 
+      return redirect()->action('ClienteController@index');
     }
 }

@@ -13,7 +13,27 @@
         <li><a href="{{ route('clientes.create') }}"class="btn-floating red tooltipped" data-tooltip="Inserir novo Cliente" data-position="top"><i class="material-icons">insert_chart</i></a></li>
       </ul>
     </div>
-<h5 class="center">Cliente n. {{ $cliente->id }}</h5><br><br>
+    <div class="row">
+      <div class="center col s12">
+        <h5>Dados e pedidos do cliente n. {{ $cliente->id }}</h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s6 push-s5">
+        <a href="{{ route('clientes.edit', ['cliente' => $cliente->id]) }}" class=" tooltipped btn-floating btn-small waves-effect waves-light blue" data-tooltip="Editar cadastro deste cliente"><i class="material-icons">edit</i></a>
+      </div>
+      <div class="col s6">
+        <form action="{{ route('clientes.destroy', ['cliente' => $cliente->id]) }}" onsubmit="return confirm('\nTem certeza que deseja fazer isso? Não apague seus clientes, eles podem voltar!'); return false;" method="post">
+          {{ csrf_field() }}
+          {{ method_field('DELETE') }}
+        <button type="submit" class="tooltipped btn-floating btn-small waves-effect waves-light red" data-tooltip="Excluir cliente" type="submit" name="action">
+            <i class="material-icons right">delete_forever</i>
+        </button>
+        </form>
+      </div>
+    </div>
+
+<br><br>
 
   <div class="row">
     <div class="col s4">
@@ -38,6 +58,7 @@
       <h6>Cadastrado em: {{ date('d/m/Y', strtotime($cliente->created_at)) }}</h6>
     </div>
   </div>
+
 <hr>
   <div class="row">
     <h5 class="center">Pedidos relacionados</h5>
