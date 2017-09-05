@@ -23,10 +23,14 @@ class PedidoController extends Controller
   }
 
     public function index(){
-      $pedido = Pedido::orderBy('id')->paginate(50000);
-      $nmCliente = Cliente::find('id')->where('id', '=', $pedido->cliente_id);
-      //$pedido = Pedido::orderBy('id')->cliente;
-       return view('pedidos.index',compact('pedido', 'nmCliente'));
+
+      $pedido =  DB::table('pedidos')
+            ->join('clientes', 'pedidos.cliente_id', '=', 'clientes.id')
+            ->select('clientes.*','pedidos.*')
+            ->orderBy('pedidos.id', 'asc')
+            ->get();
+
+       return view('pedidos.index',compact('pedido'));
     }
 
     public function create(){
@@ -35,7 +39,16 @@ class PedidoController extends Controller
     }
 
     public function show($id){
-      $pedido = Pedido::find($id);
+
+      $pedido =  DB::table('pedidos')
+            ->join('clientes', 'pedidos.cliente_id', '=', 'clientes.id')
+            ->select('clientes.nome','pedidos.*')
+            ->where('pedidos.id', '=', $id)
+            ->first();
+
+            //dd($pedido);
+            //exit;
+      //$pedido = Pedido::find($id);
        return view('pedidos.show', compact('pedido'));
     }
 

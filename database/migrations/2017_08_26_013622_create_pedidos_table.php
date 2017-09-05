@@ -22,7 +22,7 @@ class CreatePedidosTable extends Migration
             $table->float('precoUn');
             $table->float('precoTot');
             $table->text('pagamento');
-            $table->text('agendamento');
+            $table->timestamp('agendamento')->nullable();
             $table->timestamps();
         });
     }

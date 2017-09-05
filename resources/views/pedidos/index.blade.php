@@ -16,7 +16,7 @@
     @if (Session::has('mensagem_create'))
         <div class="card-panel teal lighten-4">{{Session::get('mensagem_create')}}</div>
     @endif
-<h5 class="center">Lista de Pedidos</h5><br><br>
+<h5 class="center">Lista de Pedidos</h5>
     <table id="pedidos" class="hover">
        <thead>
          <tr>
@@ -36,7 +36,7 @@
          @foreach ($pedido as $pedidos)
            <tr>
              <th class="center" scope="row">{{ $pedidos->id }}</th>
-             <td class="center" style="width: 40%" >{{ $nmCliente}}</td>
+             <td class="center" style="width: 40%" >{{ $pedidos->nome}}</td>
              <td class="center" style="width: 15%" >{{ $pedidos->produto }}</td>
              <td class="center" style="width: 15%">{{ $pedidos->qnt }}</td>
              <td class="center" style="width: 15%">{{ $pedidos->precoTot }}</td>
@@ -47,7 +47,14 @@
                  <i class="small material-icons tooltipped" data-tooltip="Em débito">money_off</i>
                @endif
              </td>
-             <td class="center" style="width: 15%">{{ date('d/m/Y', strtotime($pedidos->agendamento)) }}</td>
+             <td class="center" style="width: 15%">
+               @if ($pedidos->agendamento == NULL)
+                 <i class="material-icons">block</i>
+               @else
+                 {{ date('d/m/Y', strtotime($pedidos->agendamento)) }}
+               @endif
+
+             </td>
              <td class="center" style="width: 15%">{{ date('d/m/Y', strtotime($pedidos->created_at)) }}</td>
              <td class="center" style="width: 15%">
                 <ul class="list-inline list-small">
