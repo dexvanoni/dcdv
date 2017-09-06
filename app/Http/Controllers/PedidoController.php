@@ -66,8 +66,17 @@ class PedidoController extends Controller
     public function update(Request $request, $id){
       $pedido = Pedido::find($id);
 
+      if (($request->pagamento == "s") AND ($request->agendamento == "alterar")) {
+        $nulo = null;
+        $request->agendamento = $nulo;
+        $pedido->agendamento = $request->agendamento;
+        $pedido->pagamento = $request->pagamento;
+        $pedido->save();
+      }
+
       $data = $request->all();
       $pedido->fill($data)->save();
+
       Session::flash('mensagem_edit', "Pedido editado com Sucesso!");
       return redirect()->action('PedidoController@index');
     }

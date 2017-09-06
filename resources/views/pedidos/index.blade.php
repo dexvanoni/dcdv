@@ -58,9 +58,16 @@
              <td class="center" style="width: 15%">{{ date('d/m/Y', strtotime($pedidos->created_at)) }}</td>
              <td class="center" style="width: 15%">
                 <ul class="list-inline list-small">
-                  <li>
-                     <a href="{{ route('pedidos.show', ['pedidos' => $pedidos->id]) }}" class="btn-floating tooltipped waves-effect waves-light green" data-tooltip='Ver Pedido'><i class="material-icons">search</i></a>
-                  </li>
+                  @if ($pedidos->pagamento == "s")
+                    <li>
+                       <a href="{{ route('pedidos.show', ['pedidos' => $pedidos->id]) }}" class="btn-floating tooltipped waves-effect waves-light green" data-tooltip='Ver Pedido'><i class="material-icons">search</i></a>
+                    </li>
+                  @else
+                    <li>
+                       <a href="{{ route('pedidos.show', ['pedidos' => $pedidos->id]) }}" class="btn-floating tooltipped waves-effect waves-light red" data-tooltip='Ver Pedido'><i class="material-icons">search</i></a>
+                    </li>
+                  @endif
+
                 </ul>
             </td>
            </tr>

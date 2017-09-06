@@ -19,6 +19,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+//Route::get('pedidos/{pedido}', 'PedidoController@procura');
+
+Route::get('pedidos/{pedido}', array(
+  'as' => 'pedidos.procura',
+  'uses' => 'PedidoController@procura'
+));
+
 Route::get('/inicio', 'InicioController@inicio');
 
 Route::resource('clientes', 'ClienteController');

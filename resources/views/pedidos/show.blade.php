@@ -82,4 +82,34 @@
       <h6>Pedido em: {{ date('d/m/Y', strtotime($pedido->created_at)) }}</h6>
     </div>
   </div>
+  @if ($pedido->pagamento == "n")
+    {!! Form::model($pedido,
+       ['route' => ['pedidos.update', 'pedido' => $pedido->id],
+       'class' => 'form',
+       'enctype'=>'multipart/form-data',
+       'id'=>'form1',
+       'name'=>'form1',
+       'method' => 'PUT']) !!}
+
+    <div class="row">
+      <div class="col s12 center">
+        <input type="checkbox" id="pagamento" name="pagamento" value="s"/>
+        <label for="pagamento">Pagou</label>
+      </div>
+    </div>
+    @php
+      $nulo = null;
+    @endphp
+    {!! Form::hidden('agendamento', "alterar") !!}
+
+    <div class="row">
+      <div class="col s12 center">
+        <button class="btn waves-effect waves-light" type="submit" name="button">Enviar
+        <i class="material-icons left">call_made</i>
+        </button>
+      </div>
+    </div>
+    {!! Form::close() !!}
+  @endif
+
 @endsection
